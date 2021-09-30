@@ -1,6 +1,6 @@
 .masthead {
   width: 100vw;
-  margin-left: -2rem;
+  /* margin-left: -2rem; */
   padding: 1rem 2rem;
   background-color: #111;
   color: #fff;
@@ -8,6 +8,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+  top: 0;
+  left: -2rem;
+  box-shadow: 0 2px 4px #444;
 }
 .masthead > h1 {
   flex-basis: 38vw;
