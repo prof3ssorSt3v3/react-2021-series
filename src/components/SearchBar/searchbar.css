@@ -8,4 +8,6 @@
   padding: 1rem;
   /* new */
   gap: 2rem;
+  z-index: -1;
+  margin-top: -5px;
 }
