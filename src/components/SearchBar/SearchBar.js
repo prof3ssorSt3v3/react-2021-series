@@ -1,9 +1,14 @@
 import './searchbar.css';
+// import { useState } from 'react';
 
 export default function SearchBar(props) {
+  // const [term, setTerm] = useState('');
+
   function submitted(ev) {
     ev.preventDefault();
     console.log('submitted');
+    // setTerm(ev.target['keyword'].value);
+    props.addTerm(ev.target['keyword'].value);
   }
   function focused(ev) {
     console.log('onFocus');
@@ -36,6 +41,7 @@ export default function SearchBar(props) {
           Search
         </button>
       </form>
+      {props.term ? <p>You searched for {props.term}</p> : ''}
     </section>
   );
 }
