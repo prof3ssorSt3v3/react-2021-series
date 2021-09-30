@@ -2,5 +2,14 @@
   background-color: #282c34;
   min-height: 100vh;
   color: white;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  min-height: 80vh;
+  background-color: #222;
 }

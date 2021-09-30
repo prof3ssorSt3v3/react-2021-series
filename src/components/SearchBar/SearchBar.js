@@ -11,14 +11,14 @@ export default function SearchBar(props) {
     props.addTerm(ev.target['keyword'].value);
   }
   function focused(ev) {
-    console.log('onFocus');
+    // console.log('onFocus');
   }
   function changed(ev) {
-    console.log('onInput', ev.target.value);
+    // console.log('onInput', ev.target.value);
   }
   function clicked(ev) {
     // ev.preventDefault();
-    console.log('clicked');
+    // console.log('clicked');
   }
 
   return (
