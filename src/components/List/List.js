@@ -4,7 +4,9 @@ import ListItem from '../ListItem/ListItem';
 export default function List(props) {
   return (
     <ul className="list">
-      <ListItem />
+      {props.data.map((item) => (
+        <ListItem key={item.title} data={item} />
+      ))}
     </ul>
   );
 }

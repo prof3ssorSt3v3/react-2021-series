@@ -1,25 +1,41 @@
 import './searchresults.css';
-import { useEffect } from 'react';
+import List from '../List/List';
 
 export default function SearchResults(props) {
-  useEffect(() => {
-    console.log('initial render only of films');
-  }, []);
+  let { results, type } = { ...props };
 
-  useEffect(() => {
-    console.log('initial AND re-render of films');
-  }, [props.films]);
-
+  let formattedData = results.map((item, index) => {
+    let obj = {
+      original: item,
+    };
+    switch (type) {
+      case 'films':
+        obj.ref = item.episode_id;
+        obj.title = item.title;
+        obj.txt = item.release_date;
+        break;
+      case 'people':
+        break;
+      case 'planets':
+        break;
+    }
+    return obj;
+  });
   return (
-    <ul className="results">
-      {props.films.map((film) => (
-        <li key={film.episode_id}>{film.title}</li>
-      ))}
-    </ul>
+    <div class="results">
+      <List data={formattedData} />
+    </div>
   );
 }
 
 /*
+<ul className="results">
+      {props.results.map((item) => (
+        <li key={item.episode_id}>{item.title}</li>
+      ))}
+    </ul>
+    
+    
 {
     "characters": [
         "https://swapi.dev/api/people/1/",

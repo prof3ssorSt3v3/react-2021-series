@@ -1,10 +1,12 @@
 import './listitem.css';
 
 export default function ListItem(props) {
+  const { data } = { ...props };
+
   return (
-    <li className="listitem" data-ref="1">
-      <h2 class="title">Sample title</h2>
-      <p>Some other text</p>
+    <li className="listitem" data-ref={data.ref}>
+      <h2 class="title">{data.title}</h2>
+      {data.txt && <p>{data.txt}</p>}
     </li>
   );
 }

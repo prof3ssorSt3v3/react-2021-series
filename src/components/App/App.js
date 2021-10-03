@@ -7,24 +7,37 @@ import SearchResults from '../SearchResults/SearchResults';
 
 export default function App() {
   const name = 'Company Name';
-  const [terms, setTerms] = useState(['new hope', 'empire']);
-  const [films, setFilms] = useState([]);
+  const [terms, setTerms] = useState([]);
+  const [results, setResults] = useState([]);
+  const [dataType, setDataType] = useState('films');
 
   function addTerm(term) {
-    setTerms([term, ...terms]);
+    let newTerms = new Set([term, ...terms]);
+    setTerms(Array.from(newTerms));
+    // fetchData(term);
   }
 
   useEffect(() => {
+    fetchData(terms[0]);
+    return () => {
+      //clean up function
+    };
+  }, [terms]);
+
+  useEffect(() => {
     console.log('initial render complete');
-    fetchData('films');
+    fetchData();
   }, []);
 
-  async function fetchData(type) {
-    let url = `https://swapi.dev/api/${type}`;
+  async function fetchData(keyword) {
+    let url = `https://swapi.dev/api/${dataType}`;
+    if (keyword) {
+      url += `/?search=${keyword}`;
+    }
     let resp = await fetch(url);
     if (!resp.ok) throw new Error(resp.statusText);
     let data = await resp.json();
-    setFilms(data.results);
+    setResults(data.results);
   }
 
   return (
@@ -33,7 +46,7 @@ export default function App() {
       <SearchBar term={terms[0]} addTerm={addTerm} />
       <main className="content">
         <SearchHistory terms={terms} />
-        <SearchResults films={films} />
+        <SearchResults results={results} type={dataType} />
       </main>
     </div>
   );
