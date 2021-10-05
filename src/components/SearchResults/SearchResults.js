@@ -18,11 +18,12 @@ export default function SearchResults(props) {
         break;
       case 'planets':
         break;
+      default:
     }
     return obj;
   });
   return (
-    <div class="results">
+    <div className="results">
       <List data={formattedData} />
     </div>
   );

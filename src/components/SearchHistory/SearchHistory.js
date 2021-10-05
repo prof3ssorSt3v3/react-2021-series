@@ -5,22 +5,15 @@ export default function SearchHistory(props) {
   const { terms } = { ...props };
   let formattedData = terms.map((item, index) => {
     return {
-      ref: index,
+      ref: index + 1,
       title: item,
       txt: null,
     };
   });
+
   return (
     <div className="history">
       <List data={formattedData} />
     </div>
   );
 }
-
-/*
-<ul>
-      {props.terms.map((term) => (
-        <li key={term}>{term}</li>
-      ))}
-    </ul>
-    */

@@ -1,3 +1,6 @@
 .history {
-  flex-basis: 27%;
+  flex-basis: 31%;
+}
+.history p {
+  padding: 0rem 1rem;
 }

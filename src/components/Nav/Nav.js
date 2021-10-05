@@ -1,18 +1,13 @@
-import Link from '../Link/Link';
+// import Link from '../Link/Link';
+import { Link } from 'react-router-dom';
 import './nav.css';
 
 export default function Nav(props) {
-  const links = [
-    { title: 'Films', url: 'https://swapi.dev/api/films/' },
-    { title: 'People', url: 'https://swapi.dev/api/people/' },
-    { title: 'Planets', url: 'https://swapi.dev/api/planets/' },
-  ];
-
   return (
-    <nav>
-      {links.map((lnk) => (
-        <Link lnk={lnk} key={lnk.title} />
-      ))}
+    <nav className="mainnav">
+      <Link to="/films">Films</Link>
+      <Link to="/people">People</Link>
+      <Link to="/planets">Planets</Link>
     </nav>
   );
 }
