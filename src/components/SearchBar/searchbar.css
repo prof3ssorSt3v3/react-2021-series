@@ -1,6 +1,6 @@
 .searchBar {
   background-color: cornflowerblue;
-  font-size: 1rem;
+  font-size: 1.2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -10,4 +10,8 @@
   gap: 2rem;
   z-index: -1;
   margin-top: -5px;
+}
+.searchBar input,
+.searchBar button {
+  font-size: inherit;
 }

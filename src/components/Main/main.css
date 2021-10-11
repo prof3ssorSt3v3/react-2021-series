@@ -1,12 +1,16 @@
 .mainContent {
-  width: 62%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 }
 .mainContent > div {
+  /* one column for list, one for details */
   flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 1;
+  width: 50%;
   padding: 1rem;
   min-height: 40vh;
 }

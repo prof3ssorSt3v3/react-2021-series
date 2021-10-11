@@ -1,9 +1,7 @@
 import './App.css';
 import Header from '../Header/Header';
 import SearchBar from '../SearchBar/SearchBar';
-import SearchHistory from '../SearchHistory/SearchHistory';
-import { useState, useEffect } from 'react';
-// import SearchResults from '../SearchResults/SearchResults';
+import { useState } from 'react';
 import Main from '../Main/Main';
 
 export default function App(props) {
@@ -19,8 +17,8 @@ export default function App(props) {
     <div className="App">
       <Header company={name} />
       <SearchBar term={terms[0]} addTerm={addTerm} />
+
       <main className="content">
-        <SearchHistory terms={terms} />
         <Main />
       </main>
     </div>
