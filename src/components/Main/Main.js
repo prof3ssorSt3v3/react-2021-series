@@ -17,7 +17,7 @@ export default function Main(props) {
       if (pathname.indexOf('/people') > -1) {
         let resp = await fetch('https://swapi.dev/api/people');
         let data = await resp.json();
-        console.log('Fetched the people. Updating people state');
+        // console.log('Fetched the people. Updating people state');
         setPeople(data.results);
       }
     })();
