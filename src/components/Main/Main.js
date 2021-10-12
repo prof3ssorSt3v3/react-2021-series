@@ -1,5 +1,6 @@
 import './main.css';
 import Home from '../Home/Home';
+import Sub from '../Sub/Sub';
 import Films from '../Films/Films';
 import People from '../People/People';
 import Person from '../Person/Person';
@@ -48,7 +49,14 @@ export default function Main(props) {
           path="/"
           exact
           render={() => {
-            return <Home />;
+            let name = ['Kylo', 'Rey', 'Luke'];
+
+            return (
+              <Home name={name} active={false} time={new Date() - 50000000}>
+                <Sub />
+                <Sub />
+              </Home>
+            );
           }}
         />
 
