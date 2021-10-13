@@ -20,18 +20,19 @@ export default function Main(props) {
 
   useEffect(() => {
     (async function () {
+      let url = 'https://swapi.dev/api';
       if (pathname.indexOf('/people') > -1) {
-        let resp = await fetch('https://swapi.dev/api/people');
+        let resp = await fetch(`${url}/people?`);
         let data = await resp.json();
         setPeople(data.results);
       }
       if (pathname.indexOf('/films') > -1) {
-        let resp = await fetch('https://swapi.dev/api/films');
+        let resp = await fetch(`${url}/films?`);
         let data = await resp.json();
         setFilms(data.results);
       }
       if (pathname.indexOf('/planets') > -1) {
-        let resp = await fetch('https://swapi.dev/api/people');
+        let resp = await fetch(`${url}/planets?`);
         let data = await resp.json();
         setPlanets(data.results);
       }
