@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function Planet({ findPlanet }) {
-  const [planet, setPlanet] = useState(null);
+export default function Planet({ list }) {
   const { id } = useParams();
-
-  useEffect(() => {
-    setPlanet(findPlanet(id));
-  }, [findPlanet, id]);
+  const planet = list.find((item, index) => parseInt(id) === index + 1);
 
   let details = (
     <>

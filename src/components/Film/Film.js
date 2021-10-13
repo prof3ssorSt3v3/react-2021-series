@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function Film({ findFilm }) {
-  const [film, setFilm] = useState(null);
+export default function Film({ list }) {
   const { id } = useParams();
-
-  useEffect(() => {
-    setFilm(findFilm(id));
-  }, [findFilm, id]);
+  const film = list.find((item, index) => parseInt(id) === index + 1);
 
   let details = (
     <>
