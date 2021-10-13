@@ -12,9 +12,9 @@ export default function Planet({ list }) {
   );
 
   return (
-    <>
+    <div>
       <h2>Planet Details</h2>
       {planet && planet.name === 'Alderaan' ? 'Too soon.' : details}
-    </>
+    </div>
   );
 }

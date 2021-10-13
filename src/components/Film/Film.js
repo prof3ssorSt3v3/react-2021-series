@@ -12,9 +12,9 @@ export default function Film({ list }) {
   );
 
   return (
-    <>
+    <div>
       <h2>Film Details</h2>
       {film && details}
-    </>
+    </div>
   );
 }
