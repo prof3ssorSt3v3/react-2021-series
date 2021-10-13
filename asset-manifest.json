@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-2021-series/static/css/main.9b15bd74.chunk.css",
+    "main.js": "/react-2021-series/static/js/main.a7d29799.chunk.js",
+    "main.js.map": "/react-2021-series/static/js/main.a7d29799.chunk.js.map",
+    "runtime-main.js": "/react-2021-series/static/js/runtime-main.20386d2b.js",
+    "runtime-main.js.map": "/react-2021-series/static/js/runtime-main.20386d2b.js.map",
+    "static/js/2.2d48a0d1.chunk.js": "/react-2021-series/static/js/2.2d48a0d1.chunk.js",
+    "static/js/2.2d48a0d1.chunk.js.map": "/react-2021-series/static/js/2.2d48a0d1.chunk.js.map",
+    "index.html": "/react-2021-series/index.html",
+    "static/css/main.9b15bd74.chunk.css.map": "/react-2021-series/static/css/main.9b15bd74.chunk.css.map",
+    "static/js/2.2d48a0d1.chunk.js.LICENSE.txt": "/react-2021-series/static/js/2.2d48a0d1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20386d2b.js",
+    "static/js/2.2d48a0d1.chunk.js",
+    "static/css/main.9b15bd74.chunk.css",
+    "static/js/main.a7d29799.chunk.js"
+  ]
+}
