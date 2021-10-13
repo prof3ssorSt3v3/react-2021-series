@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 export default function Main(props) {
   //we could put state here to hold the list to share with children
   const { pathname } = useLocation();
-  const [page, setPage] = useState(pathname); // current route
+  const { keyword } = props;
   const [people, setPeople] = useState([]); //list of people
   const [planets, setPlanets] = useState([]); //list of planets
   const [films, setFilms] = useState([]); //list of films
@@ -22,22 +22,22 @@ export default function Main(props) {
     (async function () {
       let url = 'https://swapi.dev/api';
       if (pathname.indexOf('/people') > -1) {
-        let resp = await fetch(`${url}/people?`);
+        let resp = await fetch(`${url}/people?search=${keyword}`);
         let data = await resp.json();
         setPeople(data.results);
       }
       if (pathname.indexOf('/films') > -1) {
-        let resp = await fetch(`${url}/films?`);
+        let resp = await fetch(`${url}/films?search=${keyword}`);
         let data = await resp.json();
         setFilms(data.results);
       }
       if (pathname.indexOf('/planets') > -1) {
-        let resp = await fetch(`${url}/planets?`);
+        let resp = await fetch(`${url}/planets?search=${keyword}`);
         let data = await resp.json();
         setPlanets(data.results);
       }
     })();
-  }, [pathname]); //run this each time the route changes
+  }, [pathname, keyword]); //run this each time the route changes
 
   return (
     <div className="mainContent">
