@@ -10,6 +10,12 @@ export default function Film({ list }) {
   const [fav, updateFav] = useFav();
 
   function clicked(ev) {
+    if (fav.id === parseInt(id)) {
+      //clear fav
+      updateFav('', 0, {});
+      return;
+    }
+    //change fav
     updateFav('films', parseInt(id), film);
   }
   let details = (
@@ -23,11 +29,19 @@ export default function Film({ list }) {
     <div>
       <h2>Film Details</h2>
       {details}
-      <p>The current id of the favourite is {fav.id}</p>
-      <p>{fav.data.title && <>Favourite film is {fav.data.title}</>}</p>
+      {fav.id !== 0 && <p>The current id of the favourite is {fav.id}</p>}
+      {fav.data.title && <p>Favourite film is {fav.data.title}</p>}
       <p>
         <button onClick={clicked}>
-          <span className="material-icons">favorite</span> Set as Fav
+          {fav.id === parseInt(id) ? (
+            <span>
+              <i className="material-icons">favorite</i> Clear Fav
+            </span>
+          ) : (
+            <span>
+              <i className="material-icons">favorite_border</i> Set as Fav
+            </span>
+          )}
         </button>
       </p>
     </div>

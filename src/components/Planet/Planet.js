@@ -1,8 +1,20 @@
 import { useParams } from 'react-router-dom';
+import { useFav } from '../../context/FavContext';
 
 export default function Planet({ list }) {
   const { id } = useParams();
   const planet = list.find((item, index) => parseInt(id) === index + 1);
+  const [fav, updateFav] = useFav();
+
+  function clicked(ev) {
+    if (fav.id === parseInt(id)) {
+      //clear fav
+      updateFav('', 0, {});
+      return;
+    }
+    //change fav
+    updateFav('planets', parseInt(id), planet);
+  }
 
   let details = (
     <>

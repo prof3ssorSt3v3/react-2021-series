@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import './people.css';
+import { useFav } from '../../context/FavContext';
 
-export default function People({ list }) {
+export default function People(props) {
   //state fetch done in Main.js and passed as props.list
   //props.list also passed to Person
   //destructure to get list
+  const { list } = props;
+  const [fav] = useFav();
 
   return (
     <div className="results">
@@ -14,6 +17,11 @@ export default function People({ list }) {
         <p key={item.name}>
           <NavLink activeClassName="activeLink" to={`/people/${index + 1}`}>
             {item.name}
+            {fav.type === 'people' && index + 1 === parseInt(fav.id) && (
+              <>
+                <span className="material-icons">favorite</span> FAVOURITE!
+              </>
+            )}
           </NavLink>
         </p>
       ))}

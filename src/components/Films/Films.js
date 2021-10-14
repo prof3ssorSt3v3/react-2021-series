@@ -17,7 +17,7 @@ export default function Films(props) {
           <p key={film.title}>
             <NavLink activeClassName="activeLink" to={`/films/${index + 1}`}>
               {film.title}{' '}
-              {index + 1 === parseInt(fav.id) && (
+              {fav.type === 'films' && index + 1 === parseInt(fav.id) && (
                 <>
                   <span className="material-icons">favorite</span> FAVOURITE!
                 </>
