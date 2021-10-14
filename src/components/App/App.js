@@ -6,6 +6,7 @@ import Main from '../Main/Main';
 import { useLocation } from 'react-router-dom';
 //create context object in App so it can be shared
 //add the Provider to the component tree to give access to children
+import { FavProvider } from '../../context/FavContext';
 
 export default function App(props) {
   const name = 'Company Name';
@@ -22,21 +23,23 @@ export default function App(props) {
     let oldPath = page.split('/')[1];
     if (newPath !== oldPath) {
       setPage(pathname);
-      console.log('CHANGED the base path');
+      // console.log('CHANGED the base path');
       setKeyword('');
     } else {
-      console.log('SAME base path');
+      // console.log('SAME base path');
     }
-  }, [pathname]);
+  }, [pathname, page]);
   return (
-    <div className="App">
-      <Header company={name} />
-      <SearchBar keyword={keyword} saveSearch={saveSearch} />
+    <FavProvider>
+      <div className="App">
+        <Header company={name} />
+        <SearchBar keyword={keyword} saveSearch={saveSearch} />
 
-      <main className="content">
-        <Main keyword={keyword} />
-      </main>
-    </div>
+        <main className="content">
+          <Main keyword={keyword} />
+        </main>
+      </div>
+    </FavProvider>
   );
 }
 

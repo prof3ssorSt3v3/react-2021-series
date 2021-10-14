@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './films.css';
+//if we just want the value we can import useFav() custom hook
+import { useFav } from '../../context/FavContext';
 
 export default function Films(props) {
   const { list } = props;
+  const [fav] = useFav();
 
   return (
     <>
@@ -13,7 +16,12 @@ export default function Films(props) {
         {list.map((film, index) => (
           <p key={film.title}>
             <NavLink activeClassName="activeLink" to={`/films/${index + 1}`}>
-              {film.title}
+              {film.title}{' '}
+              {index + 1 === parseInt(fav.id) && (
+                <>
+                  <span className="material-icons">favorite</span> FAVOURITE!
+                </>
+              )}
             </NavLink>
           </p>
         ))}
