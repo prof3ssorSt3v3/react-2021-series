@@ -13,7 +13,7 @@ export default function Person({ list }) {
   const [fav, updateFav] = useFav();
 
   function clicked(ev) {
-    if (fav.id === parseInt(id)) {
+    if (fav.id === parseInt(id) && fav.type === 'people') {
       //clear fav
       updateFav('', 0, {});
       return;
