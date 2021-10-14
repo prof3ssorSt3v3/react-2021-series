@@ -12,7 +12,10 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
+  "homepage": "https://prof3ssorSt3v3.github.io/react-2021-series/",
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

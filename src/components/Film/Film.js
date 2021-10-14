@@ -1,4 +1,7 @@
 import { useParams } from 'react-router-dom';
+// consume context object in this component
+// display if a film object matches the one in context
+// provide button to set as new favourite
 
 export default function Film({ list }) {
   const { id } = useParams();

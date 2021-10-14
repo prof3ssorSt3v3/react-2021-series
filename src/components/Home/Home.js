@@ -1,5 +1,7 @@
 import { PropTypes } from 'prop-types';
-
+//Consume context object in this component
+//to display current value
+//or set value to empty
 export default function Home(props) {
   const { time, active, name } = props;
   let nms = Array.isArray(name) ? name.join(' and ') : name;

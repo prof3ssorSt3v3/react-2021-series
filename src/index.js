@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+//BrowserRouter,
+/*
+(default) slash  /#/  /#/planets
+noslash  /#    /#planets
+hashbang  /#!/   /#!/planets
 
+basename="/something"
+*/
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter hashType="slash">
     <App />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );

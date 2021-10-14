@@ -4,6 +4,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
 import Main from '../Main/Main';
 import { useLocation } from 'react-router-dom';
+//create context object in App so it can be shared
+//add the Provider to the component tree to give access to children
 
 export default function App(props) {
   const name = 'Company Name';
