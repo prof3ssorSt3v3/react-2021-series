@@ -1,18 +1,28 @@
 import './main.css';
 import Home from '../Home/Home';
 import Sub from '../Sub/Sub';
-import Films from '../Films/Films';
-import Film from '../Film/Film';
-import People from '../People/People';
-import Person from '../Person/Person';
-import Planets from '../Planets/Planets';
-import Planet from '../Planet/Planet';
+// Lazy Load this section /////
+// import Films from '../Films/Films';
+// import Film from '../Film/Film';
+// import People from '../People/People';
+// import Person from '../Person/Person';
+// import Planets from '../Planets/Planets';
+// import Planet from '../Planet/Planet';
+// Lazy Load this section ////
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import axios from 'axios';
+import Spinner from '../Spinner/Spinner';
 
 export default function Main(props) {
   //we could put state here to hold the list to share with children
+  const Films = lazy(() => import('../Films/Films'));
+  const Film = lazy(() => import('../Film/Film'));
+  const People = lazy(() => import('../People/People'));
+  const Person = lazy(() => import('../Person/Person'));
+  const Planets = lazy(() => import('../Planets/Planets'));
+  const Planet = lazy(() => import('../Planet/Planet'));
+
   const { pathname } = useLocation();
   const { keyword } = props;
   const [people, setPeople] = useState([]); //list of people
@@ -58,23 +68,35 @@ export default function Main(props) {
     <div className="mainContent">
       <Switch>
         <Route path="/films">
-          <Films list={films} />
+          <Suspense fallback={<Spinner>Loading Films</Spinner>}>
+            <Films list={films} />
+          </Suspense>
           <Route path="/films/:id">
-            <Film list={films} />
+            <Suspense fallback={<Spinner>Loading Details</Spinner>}>
+              <Film list={films} />
+            </Suspense>
           </Route>
         </Route>
         <Route path="/planets">
-          <Planets list={planets} />
+          <Suspense fallback={<Spinner>Loading Planets</Spinner>}>
+            <Planets list={planets} />
+          </Suspense>
           <Route path="/planets/:id">
-            <Planet list={planets} />
+            <Suspense fallback={<Spinner>Loading Details</Spinner>}>
+              <Planet list={planets} />
+            </Suspense>
           </Route>
         </Route>
 
         <Route path="/people">
-          <People list={people} />
+          <Suspense fallback={<Spinner>Loading People</Spinner>}>
+            <People list={people} />
+          </Suspense>
           {/* People is passed prop with fetch results */}
           <Route path="/people/:id">
-            <Person list={people} />
+            <Suspense fallback={<Spinner>Loading Details</Spinner>}>
+              <Person list={people} />
+            </Suspense>
             {/* Person is passed prop with fetch results */}
           </Route>
         </Route>
