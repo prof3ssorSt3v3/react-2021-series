@@ -22,11 +22,27 @@ export default function Planet({ list }) {
       <p>{planet && planet.terrain}</p>
     </>
   );
+  let button = (
+    <p>
+      <button onClick={clicked}>
+        {fav.id === parseInt(id) ? (
+          <span>
+            <i className="material-icons">favorite</i> Clear Fav
+          </span>
+        ) : (
+          <span>
+            <i className="material-icons">favorite_border</i> Set as Fav
+          </span>
+        )}
+      </button>
+    </p>
+  );
 
   return (
     <div>
       <h2>Planet Details</h2>
       {planet && planet.name === 'Alderaan' ? 'Too soon.' : details}
+      {button}
     </div>
   );
 }
