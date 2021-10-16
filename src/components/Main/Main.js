@@ -9,6 +9,7 @@ import Planets from '../Planets/Planets';
 import Planet from '../Planet/Planet';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Main(props) {
   //we could put state here to hold the list to share with children
@@ -22,22 +23,36 @@ export default function Main(props) {
     (async function () {
       let url = 'https://swapi.dev/api';
       if (pathname.indexOf('/people') > -1) {
-        let resp = await fetch(`${url}/people?search=${keyword}`);
-        let data = await resp.json();
-        setPeople(data.results);
+        if (people.length === 0) {
+          axios
+            .get(`${url}/people?search=${keyword}`)
+            .then((resp) => {
+              let data = resp.data; //resp.status, resp.statusText
+              //compare results update people ONLY if changed
+              setPeople(data.results);
+            })
+            .catch(console.error);
+        }
+        // let resp = await fetch(`${url}/people?search=${keyword}`);
+        // let data = await resp.json();
+        // setPeople(data.results);
       }
       if (pathname.indexOf('/films') > -1) {
-        let resp = await fetch(`${url}/films?search=${keyword}`);
-        let data = await resp.json();
-        setFilms(data.results);
+        if (films.length === 0) {
+          let resp = await fetch(`${url}/films?search=${keyword}`);
+          let data = await resp.json();
+          setFilms(data.results);
+        }
       }
       if (pathname.indexOf('/planets') > -1) {
-        let resp = await fetch(`${url}/planets?search=${keyword}`);
-        let data = await resp.json();
-        setPlanets(data.results);
+        if (planets.length === 0) {
+          let resp = await fetch(`${url}/planets?search=${keyword}`);
+          let data = await resp.json();
+          setPlanets(data.results);
+        }
       }
     })();
-  }, [pathname, keyword]); //run this each time the route changes
+  }, [pathname, keyword, people, films, planets]); //run this each time the route changes
 
   return (
     <div className="mainContent">

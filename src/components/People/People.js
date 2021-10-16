@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import './people.css';
 import { useFav } from '../../context/FavContext';
+import Spinner from '../Spinner/Spinner';
+import { useState, useEffect } from 'react';
 
 export default function People(props) {
   //state fetch done in Main.js and passed as props.list
@@ -8,10 +10,15 @@ export default function People(props) {
   //destructure to get list
   const { list } = props;
   const [fav] = useFav();
-
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setTimeout(setLoaded, 800, true);
+    // setLoaded(true);
+  }, [list]);
   return (
     <div className="results">
       <h2>People List</h2>
+      {!loaded && <Spinner>LOADING...</Spinner>}
       {list.length === 0 && <p>No people...</p>}
       {list.map((item, index) => (
         <p key={item.name}>

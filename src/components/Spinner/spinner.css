@@ -1,0 +1,26 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  font-size: 4rem;
+  animation: pulse 0.6s linear 0.3s infinite normal forwards;
+}
+@keyframes pulse {
+  0% {
+    color: hsla(0, 0%, 100%, 1);
+  }
+  50% {
+    color: hsla(0, 0%, 100%, 0.1);
+  }
+  100% {
+    color: hsla(0, 0%, 100%, 1);
+  }
+}
