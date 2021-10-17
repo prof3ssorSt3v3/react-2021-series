@@ -23,7 +23,7 @@ export default function Person({ list }) {
   }
 
   return (
-    <div>
+    <div className="details">
       <h2>Person Details {id}</h2>
       {person && <p>{person.name}</p>}
       {person && <p>{person.birth_year}</p>}

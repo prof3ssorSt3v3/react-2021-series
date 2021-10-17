@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from 'react';
+//use the useLocalStorage hook instead of useState
 
 const FavContext = createContext();
 //now we have a context object

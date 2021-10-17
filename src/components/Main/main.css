@@ -5,7 +5,8 @@
   justify-content: space-between;
   align-items: flex-start;
 }
-.mainContent > div {
+.mainContent > div.results,
+.mainContent > div.details {
   /* one column for list, one for details */
   flex-basis: 50%;
   flex-grow: 0;

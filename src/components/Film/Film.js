@@ -26,7 +26,7 @@ export default function Film({ list }) {
   );
 
   return (
-    <div>
+    <div className="details">
       <h2>Film Details</h2>
       {details}
       {fav.id !== 0 && <p>The current id of the favourite is {fav.id}</p>}

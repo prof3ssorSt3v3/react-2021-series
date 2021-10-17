@@ -1,18 +1,10 @@
 import './main.css';
 import Home from '../Home/Home';
 import Sub from '../Sub/Sub';
-// Lazy Load this section /////
-// import Films from '../Films/Films';
-// import Film from '../Film/Film';
-// import People from '../People/People';
-// import Person from '../Person/Person';
-// import Planets from '../Planets/Planets';
-// import Planet from '../Planet/Planet';
-// Lazy Load this section ////
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { lazy, Suspense, useState, useEffect } from 'react';
-import axios from 'axios';
 import Spinner from '../Spinner/Spinner';
+import axios from 'axios';
 
 export default function Main(props) {
   //we could put state here to hold the list to share with children

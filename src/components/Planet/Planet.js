@@ -39,7 +39,7 @@ export default function Planet({ list }) {
   );
 
   return (
-    <div>
+    <div className="details">
       <h2>Planet Details</h2>
       {planet && planet.name === 'Alderaan' ? 'Too soon.' : details}
       {button}
