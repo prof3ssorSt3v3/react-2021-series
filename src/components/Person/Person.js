@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 // import { useParams, useLocation, useHistory } from 'react-router-dom';
 // import { useEffect, useState } from 'react';
 import { useFav } from '../../context/FavContext';
-
+import { useEffect } from 'react';
 export default function Person({ list }) {
   // let loc = useLocation();
   // let hist = useHistory();
@@ -21,7 +21,9 @@ export default function Person({ list }) {
     //change fav
     updateFav('people', parseInt(id), person);
   }
-
+  useEffect(() => {
+    console.log('initial film details or re-render');
+  });
   return (
     <div className="details">
       <h2>Person Details {id}</h2>

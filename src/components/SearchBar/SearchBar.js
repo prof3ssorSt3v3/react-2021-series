@@ -7,7 +7,7 @@ export default function SearchBar(props) {
 
   function submitted(ev) {
     ev.preventDefault();
-    console.log('submitted');
+    //AFTER the change in route we need to update keyword
     saveSearch(inputRef.current.value);
   }
 

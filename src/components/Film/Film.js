@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 // display if a film object matches the one in context
 // provide button to set as new favourite
 import { useFav } from '../../context/FavContext';
+import { useEffect } from 'react'; //added for episode-19 demo
 
 export default function Film({ list }) {
   const { id } = useParams();
@@ -24,6 +25,10 @@ export default function Film({ list }) {
       <p>{film && film.release_date}</p>
     </>
   );
+  useEffect(() => {
+    //added for episode-19 demo
+    console.log('initial film details or re-render');
+  });
 
   return (
     <div className="details">

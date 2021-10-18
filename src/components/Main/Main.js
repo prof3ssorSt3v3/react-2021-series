@@ -2,9 +2,9 @@ import './main.css';
 import Home from '../Home/Home';
 import Sub from '../Sub/Sub';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Spinner from '../Spinner/Spinner';
-import axios from 'axios';
+import useStarWars from '../../hooks/useStarWars';
 
 export default function Main(props) {
   //we could put state here to hold the list to share with children
@@ -17,44 +17,23 @@ export default function Main(props) {
 
   const { pathname } = useLocation();
   const { keyword } = props;
-  const [people, setPeople] = useState([]); //list of people
-  const [planets, setPlanets] = useState([]); //list of planets
-  const [films, setFilms] = useState([]); //list of films
+  const [people, setPeople] = useStarWars('people'); //list of people
+  const [planets, setPlanets] = useStarWars('planets'); //list of planets
+  const [films, setFilms] = useStarWars('films'); //list of films
 
   useEffect(() => {
     (async function () {
-      let url = 'https://swapi.dev/api';
       if (pathname.indexOf('/people') > -1) {
-        if (people.length === 0) {
-          axios
-            .get(`${url}/people?search=${keyword}`)
-            .then((resp) => {
-              let data = resp.data; //resp.status, resp.statusText
-              //compare results update people ONLY if changed
-              setPeople(data.results);
-            })
-            .catch(console.error);
-        }
-        // let resp = await fetch(`${url}/people?search=${keyword}`);
-        // let data = await resp.json();
-        // setPeople(data.results);
+        setPeople(keyword);
       }
       if (pathname.indexOf('/films') > -1) {
-        if (films.length === 0) {
-          let resp = await fetch(`${url}/films?search=${keyword}`);
-          let data = await resp.json();
-          setFilms(data.results);
-        }
+        setFilms(keyword);
       }
       if (pathname.indexOf('/planets') > -1) {
-        if (planets.length === 0) {
-          let resp = await fetch(`${url}/planets?search=${keyword}`);
-          let data = await resp.json();
-          setPlanets(data.results);
-        }
+        setPlanets(keyword);
       }
     })();
-  }, [pathname, keyword, people, films, planets]); //run this each time the route changes
+  }, [pathname, keyword, setPeople, setFilms, setPlanets]); //run this each time the route changes
 
   return (
     <div className="mainContent">

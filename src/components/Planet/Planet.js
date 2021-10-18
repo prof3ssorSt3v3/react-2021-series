@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useFav } from '../../context/FavContext';
+import { useEffect } from 'react';
 
 export default function Planet({ list }) {
   const { id } = useParams();
@@ -37,7 +38,9 @@ export default function Planet({ list }) {
       </button>
     </p>
   );
-
+  useEffect(() => {
+    console.log('initial film details or re-render');
+  });
   return (
     <div className="details">
       <h2>Planet Details</h2>
