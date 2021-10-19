@@ -16,6 +16,9 @@ export default function App(props) {
   function saveSearch(term) {
     setKeyword(term);
   }
+  const category = pathname.split('/')[1];
+  // /   /planets   /planets/45
+
   useEffect(() => {
     //see if /planets => /films change keyword
     //if /planets => /planets/5 do NOT change keyword
@@ -33,7 +36,7 @@ export default function App(props) {
     <FavProvider>
       <div className="App">
         <Header company={name} />
-        <SearchBar keyword={keyword} saveSearch={saveSearch} />
+        {category && <SearchBar keyword={keyword} saveSearch={saveSearch} />}
 
         <main className="content">
           <Main keyword={keyword} />

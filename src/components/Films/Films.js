@@ -9,12 +9,22 @@ export default function Films(props) {
   const { list } = props;
   const [fav] = useFav();
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
+    let timmy;
     if (list.length > 0) {
-      setTimeout(setLoaded, 300, true);
-      // setLoaded(true);
+      timmy = setTimeout(setLoaded, 300, true);
+    } else {
+      //on initial render
+      //get rid of spinner after a default time
+      //same as axios timeout
+      timmy = setTimeout(setLoaded, 4000, true);
     }
+    return () => {
+      clearTimeout(timmy);
+    };
   }, [list]);
+
   return (
     <>
       <div className="results">

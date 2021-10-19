@@ -13,7 +13,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "homepage": "https://prof3ssorSt3v3.github.io/react-2021-series/",
+  "homepage": "https://prof3ssorSt3v3.github.io/",
   "scripts": {
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",

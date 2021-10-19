@@ -12,7 +12,7 @@ export default function useStarWars(category) {
   useEffect(() => {
     console.log('star wars axios', category, keyword);
     axios
-      .get(category, { params: { search: keyword } })
+      .get(category, { params: { search: keyword }, timeout: 4000 })
       .then((response) => {
         setList(response.data.results);
       })

@@ -22,17 +22,16 @@ export default function Main(props) {
   const [films, setFilms] = useStarWars('films'); //list of films
 
   useEffect(() => {
-    (async function () {
-      if (pathname.indexOf('/people') > -1) {
-        setPeople(keyword);
-      }
-      if (pathname.indexOf('/films') > -1) {
-        setFilms(keyword);
-      }
-      if (pathname.indexOf('/planets') > -1) {
-        setPlanets(keyword);
-      }
-    })();
+    if (pathname.indexOf('/people') > -1) {
+      setPeople(keyword);
+    }
+    if (pathname.indexOf('/films') > -1) {
+      setFilms(keyword);
+    }
+    if (pathname.indexOf('/planets') > -1) {
+      setPlanets(keyword);
+    }
+    window.scrollTo(0, 0);
   }, [pathname, keyword, setPeople, setFilms, setPlanets]); //run this each time the route changes
 
   return (

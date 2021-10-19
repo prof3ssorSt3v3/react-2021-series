@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  padding: 2rem;
 }
 .mainContent > div.results,
 .mainContent > div.details {
