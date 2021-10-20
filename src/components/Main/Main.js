@@ -1,7 +1,7 @@
 import './main.css';
 import Home from '../Home/Home';
 import Sub from '../Sub/Sub';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import Spinner from '../Spinner/Spinner';
 import useStarWars from '../../hooks/useStarWars';
@@ -15,24 +15,27 @@ export default function Main(props) {
   const Planets = lazy(() => import('../Planets/Planets'));
   const Planet = lazy(() => import('../Planet/Planet'));
 
-  const { pathname } = useLocation();
-  const { keyword } = props;
+  // const { pathname } = useLocation();
+  const { keyword, category } = props;
   const [people, setPeople] = useStarWars('people'); //list of people
   const [planets, setPlanets] = useStarWars('planets'); //list of planets
   const [films, setFilms] = useStarWars('films'); //list of films
 
   useEffect(() => {
-    if (pathname.indexOf('/people') > -1) {
-      setPeople(keyword);
-    }
-    if (pathname.indexOf('/films') > -1) {
-      setFilms(keyword);
-    }
-    if (pathname.indexOf('/planets') > -1) {
-      setPlanets(keyword);
+    switch (category) {
+      case 'people':
+        setPeople(keyword);
+        break;
+      case 'films':
+        setFilms(keyword);
+        break;
+      case 'planets':
+        setPlanets(keyword);
+        break;
+      default:
     }
     window.scrollTo(0, 0);
-  }, [pathname, keyword, setPeople, setFilms, setPlanets]); //run this each time the route changes
+  }, [category, keyword, setPeople, setFilms, setPlanets]); //run this each time the route changes
 
   return (
     <div className="mainContent">

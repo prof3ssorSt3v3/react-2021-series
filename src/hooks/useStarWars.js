@@ -11,12 +11,30 @@ export default function useStarWars(category) {
 
   useEffect(() => {
     console.log('star wars axios', category, keyword);
+    let cancel;
     axios
-      .get(category, { params: { search: keyword }, timeout: 4000 })
+      .get(category, {
+        params: { search: keyword },
+        timeout: 4000,
+        cancelToken: new axios.CancelToken((c) => {
+          cancel = c;
+        }),
+      })
       .then((response) => {
         setList(response.data.results);
       })
-      .catch(console.error);
+      .catch((err) => {
+        if (axios.isCancel(err)) {
+          console.warn('Cancelled API call');
+        } else {
+          console.error(err.message);
+        }
+      });
+
+    return () => {
+      //cancel if another fetch is about to be called.
+      cancel();
+    };
   }, [category, setList, keyword]);
 
   return [list, setKeyword];

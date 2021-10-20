@@ -10,36 +10,42 @@ import { FavProvider } from '../../context/FavContext';
 
 export default function App(props) {
   const name = 'Company Name';
-  const { pathname } = useLocation();
-  const [page, setPage] = useState(pathname);
+  const { pathname, search } = useLocation();
+  const [nada, category, id] = pathname.split('/');
+  const [oldPage, setOldPage] = useState(category);
   const [keyword, setKeyword] = useState('');
-  function saveSearch(term) {
-    setKeyword(term);
-  }
-  const category = pathname.split('/')[1];
+
   // /   /planets   /planets/45
 
   useEffect(() => {
     //see if /planets => /films change keyword
     //if /planets => /planets/5 do NOT change keyword
-    let newPath = pathname.split('/')[1];
-    let oldPath = page.split('/')[1];
-    if (newPath !== oldPath) {
-      setPage(pathname);
-      // console.log('CHANGED the base path');
-      setKeyword('');
+    console.log(`going from ${oldPage} to ${category}`);
+    if (oldPage === category) {
+      if (search) {
+        const term = search.replace('?search=', '');
+        console.log(`running a search for ${term}`);
+        setKeyword(term);
+      } else {
+        if (!id) {
+          setKeyword('');
+        }
+      }
     } else {
-      // console.log('SAME base path');
+      //changed category
+      setKeyword('');
+      setOldPage(category);
     }
-  }, [pathname, page]);
+  }, [category, search, id, oldPage]);
+
   return (
     <FavProvider>
       <div className="App">
         <Header company={name} />
-        {category && <SearchBar keyword={keyword} saveSearch={saveSearch} />}
+        {category && <SearchBar keyword={keyword} category={category} />}
 
         <main className="content">
-          <Main keyword={keyword} />
+          <Main keyword={keyword} category={category} />
         </main>
       </div>
     </FavProvider>
