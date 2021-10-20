@@ -41,34 +41,6 @@ export default function Planets(props) {
             </NavLink>
           </p>
         ))}
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <p>lorem planteum</p>
-        <NavLink to="/people">People</NavLink>
       </div>
     </>
   );

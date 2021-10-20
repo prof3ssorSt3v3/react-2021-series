@@ -44,38 +44,6 @@ export default function People(props) {
           </NavLink>
         </p>
       ))}
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <NavLink to="/planets">Planets</NavLink>
     </div>
   );
 }
